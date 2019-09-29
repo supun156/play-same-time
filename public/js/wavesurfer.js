@@ -117,7 +117,12 @@ $("#play_now").click(function(r){
   socket.emit("playSong", { room: roomName });
 });
 
-socket.on('broadcast', function(data){
+socket.on('play', function(data){
   wavesurfer.playPause();
+ });
+
+ socket.on('newclientconnect',function(data) {
+   console.log(data);
+   wavesurfer.playPause();
  });
 
