@@ -20,8 +20,7 @@ io.on("connection", function(socket) {
   socket.on("playSong", function(data) {
     console.log(data);
 
-    //socket.to(data.room).emit('playSoundNow', "let's play a game");
-    socket.emit("play", "hello friends!");
+
     socket.broadcast.emit('newclientconnect',{ description: ' clients connect'});
   });
 });
