@@ -8,9 +8,7 @@ const port = 5000;
 app.use(express.static("public"));
 app.get("/", (req, res) => res.send("Hello World!"));
 
-server.listen(port, () =>
-  console.log(`Example app listening on port ${port}!`)
-);
+
 
 io.on("connection", function(socket) {
   socket.on("join_room", function(data) {
@@ -26,3 +24,5 @@ io.on("connection", function(socket) {
     socket.emit("broadcast", "hello friends!");
   });
 });
+
+server.listen(process.env.PORT || 5000);
