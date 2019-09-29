@@ -13,26 +13,16 @@ server.listen(port, () =>
 );
 
 io.on("connection", function(socket) {
+  socket.on("join_room", function(data) {
+    console.log(data);
 
-    socket.on('join_room', function(data){
+    socket.join(data.room);
+  });
 
-        console.log(data);
+  socket.on("playSong", function(data) {
+    console.log(data);
 
-        socket.join(data.room);
-     });
-
-
-
-     socket.on('playSong', function(data){
-
-
-
-        console.log(data);
-
-     //socket.to(data.room).emit('playSoundNow', "let's play a game");
-     socket.emit('broadcast', 'hello friends!');
-     });
-
-
-
+    //socket.to(data.room).emit('playSoundNow', "let's play a game");
+    socket.emit("broadcast", "hello friends!");
+  });
 });
